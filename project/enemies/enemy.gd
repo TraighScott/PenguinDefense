@@ -1,7 +1,8 @@
 extends RigidBody2D
 
+signal damaged_fort
+
 var health := 1
-var speed := 10
 
 func _process(_delta):
 	if health == 0:
@@ -14,4 +15,6 @@ func _on_body_entered(body):
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	print("bleh")
+	damaged_fort.emit()
 	queue_free()

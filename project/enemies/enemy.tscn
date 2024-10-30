@@ -4,16 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://bovt0m40xigua" path="res://icon.svg" id="1_8owrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuncw"]
-size = Vector2(128, 128)
+size = Vector2(63, 62)
 
 [node name="Enemy" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_6n088")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_iuncw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.141176, 0.0705882, 1)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_8owrn")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
