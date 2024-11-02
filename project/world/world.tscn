@@ -1,17 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkhjdu2doo870"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_h8od5"]
-[ext_resource type="PackedScene" uid="uid://bd11tq3k8soyh" path="res://enemies/enemy.tscn" id="2_bb0jc"]
-
-[sub_resource type="Curve2D" id="Curve2D_vq5o2"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 576, 832, 0, 0, 0, 0, 576, -256)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://b37xy3evdqbra" path="res://fortress/fortress.tscn" id="2_k5qnd"]
+[ext_resource type="Script" path="res://fortress/fortress.gd" id="3_ihmee"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_h8od5")
-enemy_scene = ExtResource("2_bb0jc")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -19,27 +13,31 @@ offset_bottom = 648.0
 color = Color(0.533333, 0.87451, 1, 1)
 
 [node name="EnemyPathBackground" type="ColorRect" parent="."]
-offset_left = 512.0
-offset_right = 640.0
-offset_bottom = 648.0
+offset_left = 980.0
+offset_top = 86.0
+offset_right = 1108.0
+offset_bottom = 734.0
+scale = Vector2(1.33061, 0.863134)
 color = Color(0.679755, 0.911014, 1, 1)
 
-[node name="EnemySpawn" type="Marker2D" parent="."]
-position = Vector2(576, 648)
-
-[node name="EnemyPath2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_vq5o2")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="EnemyPath2D"]
-unique_name_in_owner = true
-position = Vector2(576, 732)
-progress = 100.0
-rotates = false
-cubic_interp = false
-loop = false
+[node name="EnemyPathBackground2" type="ColorRect" parent="."]
+offset_left = 980.0
+offset_top = 87.0
+offset_right = 1108.0
+offset_bottom = 735.0
+scale = Vector2(-7.67467, 0.214434)
+color = Color(0.679755, 0.911014, 1, 1)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-one_shot = true
+wait_time = 2.0
 autostart = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 323)
+
+[node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
+position = Vector2(917, 590)
+script = ExtResource("3_ihmee")
+
+[connection signal="enemy_spawned" from="." to="Fortress" method="_on_world_enemy_spawned"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceob4w0eogjdw"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_ggy8h"]
+[ext_resource type="Texture2D" uid="uid://bovt0m40xigua" path="res://icon.svg" id="1_yfowx"]
+
+[sub_resource type="Curve2D" id="Curve2D_g1wx6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -223, 149, 0, 0, 0, 0, 1144, 148, 0, 0, 0, 0, 1144, 805)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgffh"]
+size = Vector2(127, 128)
+
+[node name="Enemy" type="Path2D"]
+curve = SubResource("Curve2D_g1wx6")
+script = ExtResource("1_ggy8h")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-223, 149)
+rotates = false
+loop = false
+
+[node name="RigidBody2D" type="RigidBody2D" parent="PathFollow2D"]
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/RigidBody2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yfowx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/RigidBody2D"]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_dgffh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="PathFollow2D/RigidBody2D"]
+
+[connection signal="body_entered" from="PathFollow2D/RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="screen_exited" from="PathFollow2D/RigidBody2D/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

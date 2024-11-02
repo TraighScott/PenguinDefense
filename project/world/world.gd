@@ -1,14 +1,20 @@
 extends Node2D
 
-@export var enemy_scene : PackedScene
-var _speed := 120.0
+
+signal enemy_spawned
+
+@onready var path = preload("res://enemy/enemy.tscn")
+@onready var fortress: Node2D = $Fortress
 
 
-func _physics_process(delta):
-	%PathFollow2D.set_progress(%PathFollow2D.get_progress() + _speed * delta)
-
+func _physics_process(_delta: float) -> void:
+	if fortress.health == 0:
+		await get_tree().create_timer(3).timeout
+		get_tree().reload_current_scene()
+	
 
 func _on_enemy_spawn_timer_timeout():
-	var enemy = enemy_scene.instantiate()
-	%PathFollow2D.add_child(enemy)
+	var enemy = path.instantiate()
+	add_child(enemy)
+	enemy_spawned.emit(enemy)
 	print("spawned")

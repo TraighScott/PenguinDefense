@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctdvmh0mbql81"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3vdq"]
+radius = 118.609
+
+[node name="Tower" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o3vdq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 11.0
+color = Color(0.405668, 0.000117295, 0.407329, 1)
