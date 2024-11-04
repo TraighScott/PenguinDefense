@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 		if tower_limit < 5:
 			var mouse_pos := get_global_mouse_position()
 			var tower = tower_scene.instantiate()
-			add_sibling(tower)
+			get_node("Towers").add_child(tower)
 			tower.position = mouse_pos
 			tower_limit += 1
 

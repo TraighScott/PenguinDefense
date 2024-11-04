@@ -39,5 +39,7 @@ position = Vector2(576, 323)
 position = Vector2(917, 590)
 script = ExtResource("3_ihmee")
 
+[node name="Towers" type="Node2D" parent="."]
+
 [connection signal="enemy_spawned" from="." to="Fortress" method="_on_world_enemy_spawned"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

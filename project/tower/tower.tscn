@@ -1,24 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctdvmh0mbql81"]
+[gd_scene load_steps=5 format=3 uid="uid://ctdvmh0mbql81"]
 
 [ext_resource type="Script" path="res://tower/tower.gd" id="1_bf3bc"]
+[ext_resource type="Texture2D" uid="uid://bovt0m40xigua" path="res://icon.svg" id="2_728or"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3vdq"]
 radius = 118.609
 
-[node name="Tower" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2sd1"]
+size = Vector2(23, 23)
+
+[node name="Tower" type="StaticBody2D"]
 script = ExtResource("1_bf3bc")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.5, -0.5)
+rotation = 1.5708
+scale = Vector2(0.179688, 0.179688)
+texture = ExtResource("2_728or")
+
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_o3vdq")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -11.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 11.0
-color = Color(0.405668, 0.000117295, 0.407329, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_r2sd1")
+
+[node name="Marker2D" type="Marker2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
