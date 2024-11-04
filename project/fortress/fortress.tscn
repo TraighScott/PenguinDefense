@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://b37xy3evdqbra"]
+[gd_scene load_steps=2 format=3 uid="uid://b37xy3evdqbra"]
+
+[ext_resource type="Script" path="res://fortress/fortress.gd" id="1_vtpmo"]
 
 [node name="Fortress" type="Node2D"]
+script = ExtResource("1_vtpmo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 297.0

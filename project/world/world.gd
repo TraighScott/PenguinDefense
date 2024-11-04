@@ -3,7 +3,7 @@ extends Node2D
 
 signal enemy_spawned
 
-@onready var path = preload("res://enemy/enemy.tscn")
+@onready var path = preload("res://enemy/path1.tscn")
 @onready var tower_scene = preload("res://tower/tower.tscn")
 @onready var fortress: Node2D = $Fortress
 
@@ -26,5 +26,6 @@ func _physics_process(_delta: float) -> void:
 func _on_enemy_spawn_timer_timeout():
 	var enemy = path.instantiate()
 	add_child(enemy)
-	enemy_spawned.emit(enemy)
+	#print(enemy.enemy)
+	enemy_spawned.emit(enemy.enemy)
 	print("spawned")
