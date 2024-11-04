@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dse5rau7ux2sn"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_p0bl0"]
+[ext_resource type="Theme" uid="uid://dswano8r6l2mp" path="res://menus/button_theme.tres" id="1_t455a"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_p0bl0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.89059, 0.89059, 0.89059, 1)
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 490.0
+offset_top = 351.0
+offset_right = 665.0
+offset_bottom = 416.0
+theme = ExtResource("1_t455a")
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 484.0
+offset_top = 427.0
+offset_right = 659.0
+offset_bottom = 492.0
+theme = ExtResource("1_t455a")
+text = "Exit "
+
+[connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
