@@ -27,4 +27,5 @@ offset_bottom = 492.0
 theme = ExtResource("1_t455a")
 text = "Exit "
 
-[connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
