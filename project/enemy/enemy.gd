@@ -4,7 +4,7 @@ class_name Enemy extends CharacterBody2D
 signal damaged_fort
 
 var _health := 1
-var _speed := 200
+var _speed := 220
 
 @onready var path: PathFollow2D = get_parent()
 
