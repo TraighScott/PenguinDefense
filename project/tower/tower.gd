@@ -6,7 +6,7 @@ var curr
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_instance_valid(curr):
 		self.look_at(curr.global_position)
 		
@@ -34,7 +34,7 @@ func _on_area_2d_body_entered(body):
 		
 		
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	cur_targets = $Area2D.get_overlapping_bodies()
 	print("Out: " + str(cur_targets))
 

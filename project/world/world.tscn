@@ -39,6 +39,9 @@ offset_bottom = 735.0
 scale = Vector2(-7.67467, 0.214434)
 color = Color(0.679755, 0.911014, 1, 1)
 
+[node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
+position = Vector2(926, 568)
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -50,9 +53,6 @@ autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)
-
-[node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
-position = Vector2(917, 590)
 
 [node name="Towers" type="Node2D" parent="."]
 

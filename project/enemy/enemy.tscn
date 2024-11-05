@@ -1,24 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgyqj86t0f3hy"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_ggy8h"]
-[ext_resource type="Texture2D" uid="uid://bovt0m40xigua" path="res://icon.svg" id="1_yfowx"]
+[ext_resource type="Texture2D" uid="uid://chm1khjakxggl" path="res://enemy/fish.png" id="2_npaq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk8ma"]
-size = Vector2(127, 128)
+size = Vector2(214, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_850li"]
-size = Vector2(66, 66)
+size = Vector2(109, 66)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_ggy8h")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_yfowx")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_npaq2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0.5, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_dk8ma")
 
@@ -28,6 +28,7 @@ shape = SubResource("RectangleShape2D_dk8ma")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_850li")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

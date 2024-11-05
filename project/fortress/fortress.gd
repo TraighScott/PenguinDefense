@@ -5,7 +5,8 @@ extends Node2D
 
 
 func _on_world_enemy_spawned(enemy: Enemy) -> void:
-	enemy.damaged_fort.connect(func ():
+	enemy.damaged_fort.connect(func():
+		SoundController.tower_damaged_sound()
 		health -= 1
 		print("OW" + str(health))
 		)
