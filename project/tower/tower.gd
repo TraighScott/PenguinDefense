@@ -6,7 +6,6 @@ var curr: Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(curr):
 		self.look_at(curr.global_position)

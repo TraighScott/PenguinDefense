@@ -1,11 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b37xy3evdqbra"]
+[gd_scene load_steps=3 format=3 uid="uid://b37xy3evdqbra"]
 
 [ext_resource type="Script" path="res://fortress/fortress.gd" id="1_vtpmo"]
+[ext_resource type="Texture2D" uid="uid://7sfrh1r7itc5" path="res://fortress/fortress.png" id="2_pky1w"]
 
 [node name="Fortress" type="Node2D"]
 script = ExtResource("1_vtpmo")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 297.0
-offset_bottom = 288.0
-color = Color(0.0836955, 0.593846, 1.54018e-06, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(144, 150)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_pky1w")
