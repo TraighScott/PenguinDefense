@@ -1,11 +1,13 @@
 class_name Enemy extends CharacterBody2D
 
+
 signal damaged_fort
 
 var _health := 1
-var _speed := 120
+var _speed := 200
 
 @onready var path: PathFollow2D = get_parent()
+
 
 func _physics_process(delta):
 	if _health == 0:
@@ -16,7 +18,7 @@ func _physics_process(delta):
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print("bleh")
 	damaged_fort.emit()
-	queue_free()
+	get_parent().get_parent().queue_free()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
