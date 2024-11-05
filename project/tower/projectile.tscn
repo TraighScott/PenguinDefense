@@ -11,6 +11,7 @@ gravity_scale = 0.0
 script = ExtResource("1_1j02u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(5.36442e-07, -7.00355e-07)
 scale = Vector2(0.0595238, 0.0671141)
 texture = ExtResource("2_tbtix")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7sfrh1r7itc5" path="res://fortress/fortress.png" id="2_pky1w"]
 
 [node name="Fortress" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_vtpmo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

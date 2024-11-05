@@ -10,6 +10,7 @@ _data = {
 point_count = 3
 
 [node name="Path1" type="Path2D"]
+texture_filter = 1
 curve = SubResource("Curve2D_g1wx6")
 script = ExtResource("1_qedb3")
 

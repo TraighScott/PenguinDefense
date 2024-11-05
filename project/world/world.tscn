@@ -16,6 +16,7 @@ font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_h8od5")
 
 [node name="Background" type="ColorRect" parent="."]
