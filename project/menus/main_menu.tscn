@@ -28,12 +28,13 @@ theme = ExtResource("1_t455a")
 text = "Start"
 
 [node name="ExitButton" type="Button" parent="."]
-offset_left = 484.0
+offset_left = 486.0
 offset_top = 427.0
-offset_right = 659.0
+offset_right = 661.0
 offset_bottom = 492.0
 theme = ExtResource("1_t455a")
-text = "Exit "
+text = "Exit
+"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 205.0

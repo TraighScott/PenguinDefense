@@ -12,8 +12,7 @@ var tower_limit := 0
 
 func _physics_process(_delta: float) -> void:
 	if fortress.health == 0:
-		await get_tree().create_timer(3).timeout
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://menus/end_menu.tscn")
 	if Input.is_action_just_pressed("spawn_tower"):
 		if tower_limit < 5:
 			var mouse_pos := get_global_mouse_position()
