@@ -20,21 +20,29 @@ offset_bottom = 648.0
 color = Color(0.754268, 0.921593, 0.997144, 1)
 
 [node name="StartButton" type="Button" parent="."]
-offset_left = 490.0
-offset_top = 351.0
-offset_right = 665.0
-offset_bottom = 416.0
+offset_left = 461.0
+offset_top = 302.0
+offset_right = 691.0
+offset_bottom = 367.0
 theme = ExtResource("1_t455a")
 text = "Start"
 
 [node name="ExitButton" type="Button" parent="."]
-offset_left = 486.0
-offset_top = 427.0
-offset_right = 661.0
-offset_bottom = 492.0
+offset_left = 453.0
+offset_top = 460.0
+offset_right = 684.0
+offset_bottom = 525.0
 theme = ExtResource("1_t455a")
 text = "Exit
 "
+
+[node name="ControlsButton" type="Button" parent="."]
+offset_left = 457.0
+offset_top = 382.0
+offset_right = 688.0
+offset_bottom = 447.0
+theme = ExtResource("1_t455a")
+text = "Controls"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 205.0
