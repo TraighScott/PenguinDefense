@@ -7,3 +7,11 @@ func _on_start_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_controls_button_pressed() -> void:
+	$ControlsBorder.visible = true
+
+
+func _on_close_button_pressed() -> void:
+	$ControlsBorder.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dse5rau7ux2sn"]
+[gd_scene load_steps=6 format=3 uid="uid://dse5rau7ux2sn"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_p0bl0"]
 [ext_resource type="Theme" uid="uid://dswano8r6l2mp" path="res://menus/button_theme.tres" id="1_t455a"]
@@ -11,10 +11,20 @@ shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_b3r17"]
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu3we"]
+font_size = 24
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_p0bl0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.754268, 0.921593, 0.997144, 1)
@@ -52,5 +62,55 @@ offset_bottom = 223.0
 text = "Tower Defense Game"
 label_settings = SubResource("LabelSettings_wayrf")
 
+[node name="ControlsBorder" type="ColorRect" parent="."]
+visible = false
+offset_left = 161.0
+offset_top = 76.0
+offset_right = 1001.0
+offset_bottom = 548.0
+color = Color(0, 0, 0, 1)
+
+[node name="ControlsBackground" type="ColorRect" parent="ControlsBorder"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 833.0
+offset_bottom = 465.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.318814, 0.452116, 0.999988, 1)
+
+[node name="Instructions" type="Label" parent="ControlsBorder/ControlsBackground"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 19.0
+offset_right = 764.0
+offset_bottom = 112.0
+text = "Instructions
+Protect the fortress from oncoming enemies
+"
+label_settings = SubResource("LabelSettings_b3r17")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Controls" type="Label" parent="ControlsBorder/ControlsBackground"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 161.0
+offset_right = 672.0
+offset_bottom = 195.0
+text = "To place a tower: Left click on desired location"
+label_settings = SubResource("LabelSettings_wu3we")
+
+[node name="CloseButton" type="Button" parent="ControlsBorder/ControlsBackground"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 325.0
+offset_right = 512.0
+offset_bottom = 390.0
+theme = ExtResource("1_t455a")
+text = "Close"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="ControlsBorder/ControlsBackground/CloseButton" to="." method="_on_close_button_pressed"]
