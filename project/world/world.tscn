@@ -59,7 +59,6 @@ color = Color(0.679755, 0.911014, 1, 1)
 position = Vector2(926, 568)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="GameEndTimer" type="Timer" parent="."]

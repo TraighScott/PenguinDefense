@@ -30,22 +30,17 @@ func _on_area_2d_body_entered(body):
 					cur_target = i.get_node("../")
 		
 		curr = cur_target
-		print("In:" + str(cur_targets))
-		
-		
-		
+
 
 func _on_area_2d_body_exited(_body):
 	cur_targets = $Area2D.get_overlapping_bodies()
-	print("Out: " + str(cur_targets))
 
 
 func _on_shoot_timer_timeout() -> void:
 	if is_instance_valid(curr):
-		var impulse := Vector2(1, 0) * 100
+		var impulse := Vector2(1, 0) * 200
 		var projectile = preload("res://tower/projectile.tscn").instantiate()
 		get_parent().add_child(projectile)
 		projectile.global_position = global_position
 		projectile.apply_impulse(impulse.rotated(self.rotation))
-		print(curr)
 		
