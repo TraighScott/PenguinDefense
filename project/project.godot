@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SoundController="*res://Sounds/sound_controller.tscn"
+SoundController="*res://sounds/sound_controller.tscn"
 
 [display]
 

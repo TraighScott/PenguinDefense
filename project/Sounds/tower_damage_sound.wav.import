@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c73sd38fqcabj"
-path="res://.godot/imported/tower_damage_sound.wav-df6249081708c70fac70ab8f94ba8e59.sample"
+path="res://.godot/imported/tower_damage_sound.wav-2929e5ea6b5f581d39aa68b397a018d0.sample"
 
 [deps]
 
-source_file="res://Sounds/tower_damage_sound.wav"
-dest_files=["res://.godot/imported/tower_damage_sound.wav-df6249081708c70fac70ab8f94ba8e59.sample"]
+source_file="res://sounds/tower_damage_sound.wav"
+dest_files=["res://.godot/imported/tower_damage_sound.wav-2929e5ea6b5f581d39aa68b397a018d0.sample"]
 
 [params]
 
