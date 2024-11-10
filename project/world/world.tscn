@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkhjdu2doo870"]
+[gd_scene load_steps=10 format=3 uid="uid://dkhjdu2doo870"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_h8od5"]
 [ext_resource type="PackedScene" uid="uid://b37xy3evdqbra" path="res://fortress/fortress.tscn" id="2_k5qnd"]
@@ -15,6 +15,18 @@ font_color = Color(0, 0, 0, 1)
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r20c7"]
+size = Vector2(1154, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ih3"]
+size = Vector2(171, 419)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqhq4"]
+size = Vector2(20, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1te0v"]
+size = Vector2(232, 101)
+
 [node name="World" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_h8od5")
@@ -22,6 +34,7 @@ script = ExtResource("1_h8od5")
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 color = Color(0.533333, 0.87451, 1, 1)
 
 [node name="EnemyPathBackground" type="ColorRect" parent="."]
@@ -30,6 +43,7 @@ offset_top = 86.0
 offset_right = 1108.0
 offset_bottom = 734.0
 scale = Vector2(1.33061, 0.863134)
+mouse_filter = 2
 color = Color(0.679755, 0.911014, 1, 1)
 
 [node name="EnemyPathBackground2" type="ColorRect" parent="."]
@@ -38,6 +52,7 @@ offset_top = 87.0
 offset_right = 1108.0
 offset_bottom = 735.0
 scale = Vector2(-7.67467, 0.214434)
+mouse_filter = 2
 color = Color(0.679755, 0.911014, 1, 1)
 
 [node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
@@ -81,6 +96,26 @@ offset_bottom = 625.0
 text = "Remaining Time: 30"
 label_settings = SubResource("LabelSettings_vqd1q")
 
+[node name="NoTowerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoTowerArea"]
+position = Vector2(575, 156)
+shape = SubResource("RectangleShape2D_r20c7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NoTowerArea"]
+position = Vector2(1065.5, 435.5)
+shape = SubResource("RectangleShape2D_g4ih3")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NoTowerArea"]
+position = Vector2(9, 174)
+shape = SubResource("RectangleShape2D_kqhq4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NoTowerArea"]
+position = Vector2(1033, 595.5)
+shape = SubResource("RectangleShape2D_1te0v")
+
 [connection signal="enemy_spawned" from="." to="Fortress" method="_on_world_enemy_spawned"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="GameEndTimer" to="." method="_on_game_end_timer_timeout"]
+[connection signal="mouse_entered" from="NoTowerArea" to="." method="_on_no_tower_area_mouse_entered"]
+[connection signal="mouse_exited" from="NoTowerArea" to="." method="_on_no_tower_area_mouse_exited"]
