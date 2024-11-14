@@ -1,20 +1,29 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 
 var cur_targets := []
 var curr: Node2D
-var dragging = false
-var of = Vector2.ZERO
+var dragging := false
+var of := Vector2.ZERO
+var placed := false
+var direction := Vector2(1,0) * 200
 
 @onready var sprite: Sprite2D = $Sprite2D
 
 
 func _physics_process(_delta: float) -> void:
-	if is_instance_valid(curr):
+	if !placed:
+		velocity = direction
+	
+	if is_instance_valid(curr) and !dragging:
 		self.look_at(curr.global_position)
 	
 	if dragging:
+		direction = Vector2.ZERO
 		position = get_global_mouse_position() - of
+	
+	move_and_slide()
+
 
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
@@ -41,13 +50,12 @@ func _on_area_2d_body_exited(_body):
 
 
 func _on_shoot_timer_timeout() -> void:
-	if is_instance_valid(curr):
+	if is_instance_valid(curr) and !dragging:
 		var impulse := Vector2(1, 0) * 200
 		var projectile = preload("res://tower/projectile.tscn").instantiate()
 		get_parent().add_child(projectile)
 		projectile.global_position = global_position
-		projectile.apply_impulse(impulse.rotated(self.rotation))
-		
+		projectile.apply_impulse(impulse.rotated(rotation))
 
 
 func _on_drag_button_button_down():
@@ -57,3 +65,13 @@ func _on_drag_button_button_down():
 
 func _on_drag_button_button_up():
 	dragging = false
+	placed = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+
+
+func _on_tower_class_changed_direction():
+	print("tower pass")
+	direction = Vector2(0,1) * 200

@@ -2,10 +2,12 @@ extends Node2D
 
 
 signal enemy_spawned
+signal changed_direction
 
 var _can_place := true
 
 @onready var path = preload("res://enemy/path1.tscn")
+@onready var tower_scene = preload("res://tower/tower.tscn")
 @onready var fortress: Node2D = $Fortress
 @onready var _time_left_in_game = $GameEndTimer.wait_time
 
@@ -41,3 +43,16 @@ func wave_management():
 	if $GameEndTimer.time_left < (_time_left_in_game/1.25):
 		$EnemySpawnTimer.wait_time -= .1
 		_time_left_in_game = $GameEndTimer.wait_time
+
+
+func _on_tower_timer_timeout():
+	var tower = tower_scene.instantiate()
+	add_child(tower)
+	tower.position = $TowerClass.global_position
+	
+	$TowerTimer.wait_time = randf_range(1, 10)
+
+
+func _on_area_2d_body_entered(_body):
+	print('I pass')
+	changed_direction.emit()
