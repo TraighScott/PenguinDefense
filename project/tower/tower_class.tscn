@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddkqofqsgw66t"]
+
+[ext_resource type="Script" path="res://tower/tower_class.gd" id="1_7jyvu"]
+[ext_resource type="PackedScene" uid="uid://ctdvmh0mbql81" path="res://tower/tower.tscn" id="2_ty0lk"]
+
+[node name="TowerClass" type="Node2D"]
+script = ExtResource("1_7jyvu")
+
+[node name="Tower" parent="." instance=ExtResource("2_ty0lk")]
+
+[connection signal="changed_direction" from="." to="Tower" method="_on_tower_class_changed_direction"]
