@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_h8od5"]
 [ext_resource type="PackedScene" uid="uid://b37xy3evdqbra" path="res://fortress/fortress.tscn" id="2_k5qnd"]
+[ext_resource type="PackedScene" uid="uid://ctdvmh0mbql81" path="res://tower/tower.tscn" id="3_mdxp7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jv7dl"]
-font_size = 24
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_leykf"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
@@ -55,6 +52,17 @@ scale = Vector2(-7.67467, 0.214434)
 mouse_filter = 2
 color = Color(0.679755, 0.911014, 1, 1)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 512.0
+offset_right = 832.0
+offset_bottom = 576.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 832.0
+offset_top = 512.0
+offset_right = 896.0
+offset_bottom = 648.0
+
 [node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
 position = Vector2(926, 568)
 
@@ -71,6 +79,12 @@ position = Vector2(576, 323)
 
 [node name="Towers" type="Node2D" parent="."]
 
+[node name="Tower" parent="Towers" instance=ExtResource("3_mdxp7")]
+position = Vector2(672, 440)
+
+[node name="Tower2" parent="Towers" instance=ExtResource("3_mdxp7")]
+position = Vector2(344, 424)
+
 [node name="FortressHealth" type="Label" parent="."]
 offset_left = 291.0
 offset_top = 591.0
@@ -78,14 +92,6 @@ offset_right = 518.0
 offset_bottom = 625.0
 text = "Fortress Health 3/3"
 label_settings = SubResource("LabelSettings_jv7dl")
-
-[node name="PlaceableTowers" type="Label" parent="."]
-offset_left = 34.0
-offset_top = 591.0
-offset_right = 262.0
-offset_bottom = 625.0
-text = "Placeable Towers: 5"
-label_settings = SubResource("LabelSettings_leykf")
 
 [node name="RemainingTime" type="Label" parent="."]
 offset_left = 544.0

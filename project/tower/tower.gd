@@ -3,6 +3,8 @@ extends StaticBody2D
 
 var cur_targets := []
 var curr: Node2D
+var dragging = false
+var of = Vector2.ZERO
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -10,7 +12,9 @@ var curr: Node2D
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(curr):
 		self.look_at(curr.global_position)
-		
+	
+	if dragging:
+		position = get_global_mouse_position() - of
 
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
@@ -44,3 +48,12 @@ func _on_shoot_timer_timeout() -> void:
 		projectile.global_position = global_position
 		projectile.apply_impulse(impulse.rotated(self.rotation))
 		
+
+
+func _on_drag_button_button_down():
+	dragging = true
+	of = get_global_mouse_position() - global_position
+
+
+func _on_drag_button_button_up():
+	dragging = false
