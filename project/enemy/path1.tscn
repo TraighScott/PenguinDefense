@@ -5,9 +5,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_g1wx6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -223, 149, 0, 0, 0, 0, 1069, 150, 0, 0, 0, 0, 1070, 799)
+"points": PackedVector2Array(0, 0, 0, 0, -223, 149, 0, 0, 0, 0, 597, 149, 0, 0, 0, 0, 595, 363, 0, 0, 0, 0, 1197, 363)
 }
-point_count = 3
+point_count = 4
 
 [node name="Path1" type="Path2D"]
 texture_filter = 1

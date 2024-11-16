@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+@export var can_place: bool
+
 var cur_targets := []
 var curr: Node2D
 var dragging := false
@@ -19,14 +21,13 @@ func _physics_process(_delta: float) -> void:
 		self.look_at(curr.global_position)
 	
 	if dragging:
-		direction = Vector2.ZERO
 		position = get_global_mouse_position() - of
 	
 	move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
-	if body is CharacterBody2D:
+	if body is CharacterBody2D and placed == true:
 		var temp_array := []
 		cur_targets = $Area2D.get_overlapping_bodies()
 		
@@ -59,19 +60,26 @@ func _on_shoot_timer_timeout() -> void:
 
 
 func _on_drag_button_button_down():
-	dragging = true
-	of = get_global_mouse_position() - global_position
+	if placed == false:
+		dragging = true
+		direction = Vector2.ZERO
+		of = get_global_mouse_position() - global_position
 
 
 func _on_drag_button_button_up():
-	dragging = false
-	placed = true
+	if can_place == true:
+		dragging = false
+		placed = true
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+	if not dragging:
+		print("Back to the water")
+		queue_free()
 
 
-func _on_tower_class_changed_direction():
-	print("tower pass")
-	direction = Vector2(0,1) * 200
+func _on_tower_class_changed_direction(body):
+	print("wah")
+	if body.is_in_group("tower"):
+		print("tower pass")
+		direction = Vector2(0,1) * 200

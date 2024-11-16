@@ -1,7 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctdvmh0mbql81"]
+[gd_scene load_steps=9 format=3 uid="uid://ctdvmh0mbql81"]
 
 [ext_resource type="Script" path="res://tower/tower.gd" id="1_bf3bc"]
 [ext_resource type="Texture2D" uid="uid://cwbthgcyp1up4" path="res://tower/penguin.png" id="2_ygpwx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ondj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcmij"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qg26"]
+
+[sub_resource type="Theme" id="Theme_u5a1m"]
+Button/styles/focus = SubResource("StyleBoxEmpty_8ondj")
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxEmpty_xcmij")
+Button/styles/pressed = SubResource("StyleBoxFlat_1qg26")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3vdq"]
 radius = 118.609
@@ -14,16 +26,20 @@ collision_mask = 8
 script = ExtResource("1_bf3bc")
 
 [node name="DragButton" type="Button" parent="."]
-offset_left = -24.0
-offset_top = -40.0
-offset_right = 24.0
+offset_left = -48.0
+offset_top = -47.0
+offset_right = 36.0
 offset_bottom = 40.0
+scale = Vector2(1.11041, 1.04844)
+theme = SubResource("Theme_u5a1m")
+toggle_mode = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0.5, -0.5)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_ygpwx")
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2

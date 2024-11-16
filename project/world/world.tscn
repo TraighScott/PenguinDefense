@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkhjdu2doo870"]
+[gd_scene load_steps=10 format=3 uid="uid://dkhjdu2doo870"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_h8od5"]
 [ext_resource type="PackedScene" uid="uid://b37xy3evdqbra" path="res://fortress/fortress.tscn" id="2_k5qnd"]
 [ext_resource type="PackedScene" uid="uid://ddkqofqsgw66t" path="res://tower/tower_class.tscn" id="3_xeitl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwjqj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jv7dl"]
 font_size = 24
@@ -14,17 +12,17 @@ font_color = Color(0, 0, 0, 1)
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r20c7"]
-size = Vector2(1154, 140)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3f15"]
+size = Vector2(2260, 111)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ih3"]
-size = Vector2(171, 419)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s0ym"]
+size = Vector2(677, 142)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqhq4"]
-size = Vector2(20, 232)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_legih"]
+size = Vector2(170, 221)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1te0v"]
-size = Vector2(232, 101)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3xdb"]
+size = Vector2(497, 139)
 
 [node name="World" type="Node2D"]
 texture_filter = 1
@@ -37,38 +35,44 @@ mouse_filter = 2
 color = Color(0.533333, 0.87451, 1, 1)
 
 [node name="EnemyPathBackground" type="ColorRect" parent="."]
-offset_left = 980.0
-offset_top = 86.0
-offset_right = 1108.0
-offset_bottom = 734.0
+offset_left = 497.0
+offset_top = 61.0
+offset_right = 625.0
+offset_bottom = 480.0
 scale = Vector2(1.33061, 0.863134)
 mouse_filter = 2
 color = Color(0.679755, 0.911014, 1, 1)
 
 [node name="EnemyPathBackground2" type="ColorRect" parent="."]
-offset_left = 980.0
-offset_top = 87.0
-offset_right = 1108.0
-offset_bottom = 735.0
+offset_left = 668.0
+offset_top = 60.0
+offset_right = 755.0
+offset_bottom = 708.0
 scale = Vector2(-7.67467, 0.214434)
 mouse_filter = 2
 color = Color(0.679755, 0.911014, 1, 1)
 
-[node name="TowerPathBackground" type="ColorRect" parent="."]
-offset_top = 512.0
-offset_right = 832.0
-offset_bottom = 576.0
+[node name="EnemyPathBackground3" type="ColorRect" parent="."]
+offset_left = 666.0
+offset_top = 284.0
+offset_right = 1031.0
+offset_bottom = 445.0
+scale = Vector2(1.33061, 0.863134)
+mouse_filter = 2
+color = Color(0.679755, 0.911014, 1, 1)
 
-[node name="TowerPathBackground2" type="ColorRect" parent="."]
-offset_left = 832.0
-offset_top = 512.0
-offset_right = 896.0
-offset_bottom = 648.0
+[node name="TowerPathBackground" type="ColorRect" parent="."]
+offset_left = 2.0
+offset_top = 569.0
+offset_right = 1151.0
+offset_bottom = 633.0
+mouse_filter = 2
 
 [node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
-position = Vector2(926, 568)
+position = Vector2(1087, 200)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [node name="GameEndTimer" type="Timer" parent="."]
@@ -83,13 +87,7 @@ autostart = true
 position = Vector2(576, 323)
 
 [node name="TowerClass" parent="." instance=ExtResource("3_xeitl")]
-position = Vector2(0, 544)
-
-[node name="Area2D" type="Area2D" parent="TowerClass"]
-position = Vector2(888, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerClass/Area2D"]
-shape = SubResource("RectangleShape2D_fwjqj")
+position = Vector2(2, 601)
 
 [node name="FortressHealth" type="Label" parent="."]
 offset_left = 291.0
@@ -110,26 +108,25 @@ label_settings = SubResource("LabelSettings_vqd1q")
 [node name="NoTowerArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoTowerArea"]
-position = Vector2(575, 156)
-shape = SubResource("RectangleShape2D_r20c7")
+position = Vector2(616, 596.5)
+shape = SubResource("RectangleShape2D_r3f15")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NoTowerArea"]
-position = Vector2(1065.5, 435.5)
-shape = SubResource("RectangleShape2D_g4ih3")
+position = Vector2(328.5, 130)
+shape = SubResource("RectangleShape2D_5s0ym")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="NoTowerArea"]
-position = Vector2(9, 174)
-shape = SubResource("RectangleShape2D_kqhq4")
+position = Vector2(582, 311.5)
+shape = SubResource("RectangleShape2D_legih")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="NoTowerArea"]
-position = Vector2(1033, 595.5)
-shape = SubResource("RectangleShape2D_1te0v")
+position = Vector2(915.5, 352.5)
+shape = SubResource("RectangleShape2D_g3xdb")
 
 [connection signal="changed_direction" from="." to="TowerClass" method="_on_world_changed_direction"]
 [connection signal="enemy_spawned" from="." to="Fortress" method="_on_world_enemy_spawned"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="GameEndTimer" to="." method="_on_game_end_timer_timeout"]
 [connection signal="timeout" from="TowerTimer" to="." method="_on_tower_timer_timeout"]
-[connection signal="body_entered" from="TowerClass/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="NoTowerArea" to="." method="_on_no_tower_area_mouse_entered"]
-[connection signal="mouse_exited" from="NoTowerArea" to="." method="_on_no_tower_area_mouse_exited"]
+[connection signal="body_entered" from="NoTowerArea" to="." method="_on_no_tower_area_body_entered"]
+[connection signal="body_exited" from="NoTowerArea" to="." method="_on_no_tower_area_body_exited"]
