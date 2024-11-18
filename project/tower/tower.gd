@@ -11,10 +11,19 @@ var of := Vector2.ZERO
 var aiming_of := Vector2.ZERO
 var placed := false
 var direction := Vector2(1,0) * 200
-
-var max_distance := 150
+var id := 0
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var shoot_timer: Timer = $ShootTimer
+
+
+func _ready() -> void:
+	id = randi_range(1,2)
+	
+	if id == 2:
+		sprite.modulate = Color.BLUE
+		shoot_timer.wait_time = 2
+
 
 
 func _physics_process(_delta: float) -> void:
@@ -22,7 +31,10 @@ func _physics_process(_delta: float) -> void:
 	if !placed:
 		velocity = direction
 	
-	if _dragging:
+	if is_instance_valid(curr) and !dragging and id == 1:
+		self.look_at(curr.global_position)
+	
+	if dragging:
 		position = get_global_mouse_position() - of
 	
 	if _aiming: 
@@ -58,12 +70,19 @@ func _on_area_2d_body_exited(_body):
 
 
 func _on_shoot_timer_timeout() -> void:
-	if is_instance_valid(curr) and !_dragging:
-		var impulse := Vector2(1, 0) * 200
-		var projectile = preload("res://tower/projectile.tscn").instantiate()
-		get_parent().add_child(projectile)
-		projectile.global_position = global_position
-		projectile.apply_impulse(impulse.rotated(rotation))
+	if is_instance_valid(curr) and !dragging:
+		if id == 1:
+			print("blam1")
+			var projectile = preload("res://tower/projectile.tscn").instantiate()
+			add_child(projectile)
+			projectile.global_position = global_position
+		elif id == 2:
+			print("blam2")
+			var aoe = preload("res://tower/aoe_projectile.tscn").instantiate()
+			add_child(aoe)
+			aoe.global_position = global_position
+			
+		
 
 
 

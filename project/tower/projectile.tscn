@@ -3,11 +3,10 @@
 [ext_resource type="Script" path="res://tower/projectile.gd" id="1_1j02u"]
 [ext_resource type="Texture2D" uid="uid://b0jc8bul7jqkw" path="res://tower/snowball.png" id="2_tbtix"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1i17"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n53v7"]
 
-[node name="Projectile" type="RigidBody2D" groups=["projectile"]]
+[node name="Projectile" type="CharacterBody2D" groups=["projectile"]]
 collision_mask = 2
-gravity_scale = 0.0
 script = ExtResource("1_1j02u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,6 +16,4 @@ scale = Vector2(0.0595238, 0.0671141)
 texture = ExtResource("2_tbtix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_c1i17")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+shape = SubResource("CircleShape2D_n53v7")
