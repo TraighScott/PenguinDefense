@@ -9,6 +9,7 @@ var dragging := false
 var of := Vector2.ZERO
 var placed := false
 var direction := Vector2(1,0) * 200
+var id := 0
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -52,11 +53,11 @@ func _on_area_2d_body_exited(_body):
 
 func _on_shoot_timer_timeout() -> void:
 	if is_instance_valid(curr) and !dragging:
-		var impulse := Vector2(1, 0) * 200
+		var impulse := Vector2(1, 0) * 700
 		var projectile = preload("res://tower/projectile.tscn").instantiate()
-		get_parent().add_child(projectile)
+		add_child(projectile)
 		projectile.global_position = global_position
-		projectile.apply_impulse(impulse.rotated(rotation))
+		
 
 
 func _on_drag_button_button_down():

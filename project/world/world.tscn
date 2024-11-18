@@ -72,7 +72,6 @@ mouse_filter = 2
 position = Vector2(1087, 200)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-one_shot = true
 autostart = true
 
 [node name="GameEndTimer" type="Timer" parent="."]
