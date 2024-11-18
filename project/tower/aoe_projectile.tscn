@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://tower/aoe_projectile.gd" id="1_ld6pc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jxhdf"]
-radius = 118.089
+radius = 173.289
 
 [node name="AoeProjectile" type="StaticBody2D" groups=["projectile"]]
 script = ExtResource("1_ld6pc")
