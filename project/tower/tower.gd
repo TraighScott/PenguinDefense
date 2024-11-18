@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 var cur_targets := []
 var curr: Node2D
-var _dragging := false
+var dragging := false
 var _aiming := false
 var of := Vector2.ZERO
 var aiming_of := Vector2.ZERO
@@ -88,19 +88,19 @@ func _on_shoot_timer_timeout() -> void:
 
 func _on_drag_button_button_down():
 	if placed == false:
-		_dragging = true
+		dragging = true
 		direction = Vector2.ZERO
 		of = get_global_mouse_position() - global_position
 
 
 func _on_drag_button_button_up():
 	if can_place == true:
-		_dragging = false
+		dragging = false
 		placed = true
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if not _dragging:
+	if not dragging:
 		print("Back to the water")
 		queue_free()
 

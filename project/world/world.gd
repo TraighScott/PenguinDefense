@@ -1,7 +1,5 @@
 extends Node2D
 
-signal fast_fish_spawned
-signal tanky_fish_spawned
 signal enemy_spawned
 
 @export var can_place := true
