@@ -6,9 +6,7 @@ extends CharacterBody2D
 var cur_targets := []
 var curr: Node2D
 var dragging := false
-var _aiming := false
 var of := Vector2.ZERO
-var aiming_of := Vector2.ZERO
 var placed := false
 var direction := Vector2(1,0) * 200
 var id := 0
@@ -37,11 +35,7 @@ func _physics_process(_delta: float) -> void:
 	if dragging:
 		position = get_global_mouse_position() - of
 	
-	if _aiming: 
-		$Marker2D.position = get_global_mouse_position() - aiming_of.normalized()
-		$Marker2D/AimButton.position = $Marker2D.position
 	
-	look_at($Marker2D.position)
 	move_and_slide()
 
 
@@ -81,9 +75,6 @@ func _on_shoot_timer_timeout() -> void:
 			var aoe = preload("res://tower/aoe_projectile.tscn").instantiate()
 			add_child(aoe)
 			aoe.global_position = global_position
-			
-		
-
 
 
 func _on_drag_button_button_down():
@@ -103,12 +94,3 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	if not dragging:
 		print("Back to the water")
 		queue_free()
-
-## Oh please, oh please. Fix this, marker does not like us so. The misery. Oh the misery.
-func _on_aim_button_button_down() -> void:
-	_aiming = true
-	aiming_of = get_global_mouse_position() - $Marker2D.global_position.normalized()
-
-
-func _on_aim_button_button_up() -> void:
-	_aiming = false

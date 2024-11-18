@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgyqj86t0f3hy"]
+[gd_scene load_steps=6 format=3 uid="uid://bgyqj86t0f3hy"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_ggy8h"]
 [ext_resource type="Texture2D" uid="uid://chm1khjakxggl" path="res://enemy/fish.png" id="2_npaq2"]
+[ext_resource type="Resource" uid="uid://c5bla5usc3j7t" path="res://enemy/fish.tres" id="2_rurkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk8ma"]
 size = Vector2(214, 128)
@@ -12,6 +13,7 @@ size = Vector2(109, 66)
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_ggy8h")
+enemy_type = ExtResource("2_rurkx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
