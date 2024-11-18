@@ -12,13 +12,23 @@ var direction := Vector2(1,0) * 200
 var id := 0
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var shoot_timer: Timer = $ShootTimer
+
+
+func _ready() -> void:
+	id = randi_range(1,2)
+	
+	if id == 2:
+		sprite.modulate = Color.BLUE
+		shoot_timer.wait_time = 2
+
 
 
 func _physics_process(_delta: float) -> void:
 	if !placed:
 		velocity = direction
 	
-	if is_instance_valid(curr) and !dragging:
+	if is_instance_valid(curr) and !dragging and id == 1:
 		self.look_at(curr.global_position)
 	
 	if dragging:
@@ -53,10 +63,17 @@ func _on_area_2d_body_exited(_body):
 
 func _on_shoot_timer_timeout() -> void:
 	if is_instance_valid(curr) and !dragging:
-		var impulse := Vector2(1, 0) * 700
-		var projectile = preload("res://tower/projectile.tscn").instantiate()
-		add_child(projectile)
-		projectile.global_position = global_position
+		if id == 1:
+			print("blam1")
+			var projectile = preload("res://tower/projectile.tscn").instantiate()
+			add_child(projectile)
+			projectile.global_position = global_position
+		elif id == 2:
+			print("blam2")
+			var aoe = preload("res://tower/aoe_projectile.tscn").instantiate()
+			add_child(aoe)
+			aoe.global_position = global_position
+			
 		
 
 
