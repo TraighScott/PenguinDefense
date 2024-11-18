@@ -5,24 +5,31 @@ extends CharacterBody2D
 
 var cur_targets := []
 var curr: Node2D
-var dragging := false
+var _dragging := false
+var _aiming := false
 var of := Vector2.ZERO
+var aiming_of := Vector2.ZERO
 var placed := false
 var direction := Vector2(1,0) * 200
+
+var max_distance := 150
 
 @onready var sprite: Sprite2D = $Sprite2D
 
 
 func _physics_process(_delta: float) -> void:
+	
 	if !placed:
 		velocity = direction
 	
-	if is_instance_valid(curr) and !dragging:
-		self.look_at(curr.global_position)
-	
-	if dragging:
+	if _dragging:
 		position = get_global_mouse_position() - of
 	
+	if _aiming: 
+		$Marker2D.position = get_global_mouse_position() - aiming_of.normalized()
+		$Marker2D/AimButton.position = $Marker2D.position
+	
+	look_at($Marker2D.position)
 	move_and_slide()
 
 
@@ -51,7 +58,7 @@ func _on_area_2d_body_exited(_body):
 
 
 func _on_shoot_timer_timeout() -> void:
-	if is_instance_valid(curr) and !dragging:
+	if is_instance_valid(curr) and !_dragging:
 		var impulse := Vector2(1, 0) * 200
 		var projectile = preload("res://tower/projectile.tscn").instantiate()
 		get_parent().add_child(projectile)
@@ -59,27 +66,30 @@ func _on_shoot_timer_timeout() -> void:
 		projectile.apply_impulse(impulse.rotated(rotation))
 
 
+
 func _on_drag_button_button_down():
 	if placed == false:
-		dragging = true
+		_dragging = true
 		direction = Vector2.ZERO
 		of = get_global_mouse_position() - global_position
 
 
 func _on_drag_button_button_up():
 	if can_place == true:
-		dragging = false
+		_dragging = false
 		placed = true
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if not dragging:
+	if not _dragging:
 		print("Back to the water")
 		queue_free()
 
+## Oh please, oh please. Fix this, marker does not like us so. The misery. Oh the misery.
+func _on_aim_button_button_down() -> void:
+	_aiming = true
+	aiming_of = get_global_mouse_position() - $Marker2D.global_position.normalized()
 
-func _on_tower_class_changed_direction(body):
-	print("wah")
-	if body.is_in_group("tower"):
-		print("tower pass")
-		direction = Vector2(0,1) * 200
+
+func _on_aim_button_button_up() -> void:
+	_aiming = false

@@ -1,8 +1,8 @@
 extends Node2D
 
-
+signal fast_fish_spawned
+signal tanky_fish_spawned
 signal enemy_spawned
-signal changed_direction
 
 @export var can_place := true
 
@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	$RemainingTime.text = "Remaining Time: %d" % $GameEndTimer.time_left
 
 
-func _on_enemy_spawn_timer_timeout():
+func _on_fish_timer_timeout():
 	var enemy = path.instantiate()
 	add_child(enemy)
 	enemy_spawned.emit(enemy.enemy)
@@ -43,12 +43,6 @@ func _on_tower_timer_timeout():
 	tower.position = $TowerClass.global_position
 	
 	$TowerTimer.wait_time = randf_range(1, 10)
-
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group("tower"):
-		print('World pass')
-		changed_direction.emit(body)
 
 
 func _on_no_tower_area_body_entered(body: Node2D) -> void:

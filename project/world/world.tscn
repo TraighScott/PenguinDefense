@@ -71,8 +71,7 @@ mouse_filter = 2
 [node name="Fortress" parent="." instance=ExtResource("2_k5qnd")]
 position = Vector2(1087, 200)
 
-[node name="EnemySpawnTimer" type="Timer" parent="."]
-one_shot = true
+[node name="FishTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="GameEndTimer" type="Timer" parent="."]
@@ -123,9 +122,8 @@ shape = SubResource("RectangleShape2D_legih")
 position = Vector2(915.5, 352.5)
 shape = SubResource("RectangleShape2D_g3xdb")
 
-[connection signal="changed_direction" from="." to="TowerClass" method="_on_world_changed_direction"]
 [connection signal="enemy_spawned" from="." to="Fortress" method="_on_world_enemy_spawned"]
-[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
 [connection signal="timeout" from="GameEndTimer" to="." method="_on_game_end_timer_timeout"]
 [connection signal="timeout" from="TowerTimer" to="." method="_on_tower_timer_timeout"]
 [connection signal="body_entered" from="NoTowerArea" to="." method="_on_no_tower_area_body_entered"]

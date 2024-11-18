@@ -8,5 +8,3 @@ script = ExtResource("1_7jyvu")
 
 [node name="Tower" parent="." instance=ExtResource("2_ty0lk")]
 visible = false
-
-[connection signal="changed_direction" from="." to="Tower" method="_on_tower_class_changed_direction"]
