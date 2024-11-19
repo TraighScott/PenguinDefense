@@ -9,9 +9,10 @@ signal damaged_fort
 
 
 func _physics_process(delta):
-	if enemy_type.health == 0:
+	if enemy_type.health <= 0:
 		get_parent().get_parent().queue_free()
 	path.set_progress(path.get_progress() + enemy_type.speed * delta)
+	$EnemyHealth.text = "%d" % enemy_type.health
 
 
 func load_enemy_type(new_enemy : EnemyType):

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0jc8bul7jqkw" path="res://tower/snowball.png" id="2_tbtix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n53v7"]
+radius = 11.0
 
 [node name="Projectile" type="CharacterBody2D" groups=["projectile"]]
 collision_mask = 2

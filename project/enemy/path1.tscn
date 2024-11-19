@@ -1,13 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceob4w0eogjdw"]
+[gd_scene load_steps=6 format=3 uid="uid://ceob4w0eogjdw"]
 
 [ext_resource type="PackedScene" uid="uid://bgyqj86t0f3hy" path="res://enemy/enemy.tscn" id="1_pulvj"]
 [ext_resource type="Script" path="res://enemy/path_1.gd" id="1_qedb3"]
 
 [sub_resource type="Curve2D" id="Curve2D_g1wx6"]
+resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -223, 149, 0, 0, 0, 0, 597, 149, 0, 0, 0, 0, 595, 363, 0, 0, 0, 0, 1197, 363)
 }
 point_count = 4
+
+[sub_resource type="GDScript" id="GDScript_lh20w"]
+resource_local_to_scene = true
+script/source = "class_name EEnemyType extends Resource
+
+@export var name : String
+@export var health : int
+@export var speed : int 
+"
+
+[sub_resource type="Resource" id="Resource_yl52e"]
+resource_local_to_scene = true
+script = SubResource("GDScript_lh20w")
+name = "Fish"
+health = 1
+speed = 220
 
 [node name="Path1" type="Path2D"]
 texture_filter = 1
@@ -20,3 +37,4 @@ rotates = false
 loop = false
 
 [node name="Enemy" parent="PathFollow2D" instance=ExtResource("1_pulvj")]
+enemy_type = SubResource("Resource_yl52e")

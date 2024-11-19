@@ -16,7 +16,12 @@ var id := 0
 
 
 func _ready() -> void:
-	id = randi_range(1,2)
+	var roll = randi_range(1,10)
+	
+	if roll <= 8:
+		id = 1
+	else: 
+		id = 2
 	
 	if id == 2:
 		sprite.modulate = Color.BLUE
