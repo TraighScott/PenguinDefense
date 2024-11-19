@@ -28,7 +28,6 @@ func _ready() -> void:
 		shoot_timer.wait_time = 2
 
 
-
 func _physics_process(_delta: float) -> void:
 	
 	if !placed:

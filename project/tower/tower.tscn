@@ -55,6 +55,7 @@ shape = SubResource("RectangleShape2D_r2sd1")
 position = Vector2(148, 0)
 
 [node name="AimButton" type="Button" parent="Marker2D"]
+visible = false
 offset_right = 8.0
 offset_bottom = 8.0
 
