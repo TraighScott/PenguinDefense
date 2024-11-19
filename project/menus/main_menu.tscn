@@ -63,6 +63,7 @@ text = "Tower Defense Game"
 label_settings = SubResource("LabelSettings_wayrf")
 
 [node name="ControlsBorder" type="ColorRect" parent="."]
+visible = false
 offset_left = 161.0
 offset_top = 76.0
 offset_right = 1001.0
