@@ -6,7 +6,11 @@ By: Ethan Hooper, Traigh Scoot, William Robinson
 
 Protect the fortress from oncoming enemies
 
-- Place towers: Left click on desired location
+- Place towers: Click a tower from the path below, and click again off the enemy path to place.
+- Towers will automatically shoot and lock on to enemies.
+- Any enemy that makes it to the end of the path will make your fortress take 1 HP of damage.
+- If your fortress gets hit three times, you lose.
+- Defend your fortress until the time runs out to win!
 
 ## Licenses
 
