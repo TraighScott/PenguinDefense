@@ -72,7 +72,7 @@ mouse_filter = 2
 position = Vector2(1087, 200)
 
 [node name="FishTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.9
 autostart = true
 
 [node name="GameEndTimer" type="Timer" parent="."]
