@@ -3,13 +3,13 @@ extends CharacterBody2D
 
 @export var can_place: bool
 
-var cur_targets := []
-var curr: Node2D
-var dragging := false
-var of := Vector2.ZERO
-var placed := false
-var direction := Vector2(1,0) * 200
-var id := 0
+var _cur_targets := []
+var _curr: Node2D
+var _dragging := false
+var _of := Vector2.ZERO
+var _placed := false
+var _direction := Vector2(1,0) * 200
+var _id := 0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var shoot_timer: Timer = $ShootTimer
@@ -18,37 +18,37 @@ var id := 0
 func _ready() -> void:
 	var roll = randi_range(1,10)
 	
-	if roll <= 8:
-		id = 1
+	if roll <= 7:
+		_id = 1
 	else: 
-		id = 2
+		_id = 2
 	
-	if id == 2:
+	if _id == 2:
 		sprite.modulate = Color.BLUE
 		shoot_timer.wait_time = 2
 
 
 func _physics_process(_delta: float) -> void:
 	
-	if !placed:
-		velocity = direction
+	if !_placed:
+		velocity = _direction
 	
-	if is_instance_valid(curr) and !dragging and id == 1:
-		self.look_at(curr.global_position)
+	if is_instance_valid(_curr) and !_dragging and _id == 1:
+		self.look_at(_curr.global_position)
 	
-	if dragging:
-		position = get_global_mouse_position() - of
+	if _dragging:
+		position = get_global_mouse_position() - _of
 	
 	
 	move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
-	if body is CharacterBody2D and placed == true:
+	if body is CharacterBody2D and _placed == true:
 		var temp_array := []
-		cur_targets = $Area2D.get_overlapping_bodies()
+		_cur_targets = $Area2D.get_overlapping_bodies()
 		
-		for i in cur_targets:
+		for i in _cur_targets:
 			if "Enemy" in i.name:
 				temp_array.append(i)
 		var cur_target: Node2D = null
@@ -60,41 +60,41 @@ func _on_area_2d_body_entered(body):
 				if i.get_parent().get_progress() > cur_target.get_progress():
 					cur_target = i.get_node("../")
 		
-		curr = cur_target
+		_curr = cur_target
 
 
 func _on_area_2d_body_exited(_body):
-	cur_targets = $Area2D.get_overlapping_bodies()
+	_cur_targets = $Area2D.get_overlapping_bodies()
 
 
 func _on_shoot_timer_timeout() -> void:
-	if is_instance_valid(curr) and !dragging:
-		if id == 1:
+	if is_instance_valid(_curr) and !_dragging:
+		if _id == 1:
 			print("blam1")
-			var projectile = preload("res://tower/projectile.tscn").instantiate()
+			var projectile: CharacterBody2D = preload("res://tower/projectile.tscn").instantiate()
 			add_child(projectile)
 			projectile.global_position = global_position
-		elif id == 2:
+		elif _id == 2:
 			print("blam2")
-			var aoe = preload("res://tower/aoe_projectile.tscn").instantiate()
+			var aoe: StaticBody2D = preload("res://tower/aoe_projectile.tscn").instantiate()
 			add_child(aoe)
 			aoe.global_position = global_position
 
 
 func _on_drag_button_button_down():
-	if placed == false:
-		dragging = true
-		direction = Vector2.ZERO
-		of = get_global_mouse_position() - global_position
+	if _placed == false:
+		_dragging = true
+		_direction = Vector2.ZERO
+		_of = get_global_mouse_position() - global_position
 
 
 func _on_drag_button_button_up():
 	if can_place == true:
-		dragging = false
-		placed = true
+		_dragging = false
+		_placed = true
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	if not dragging:
+	if not _dragging:
 		print("Back to the water")
 		queue_free()

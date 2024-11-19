@@ -6,8 +6,8 @@ signal damaged_fort
 @export var enemy_type : EnemyType
 
 @onready var path: PathFollow2D = get_parent()
-@onready var health
-@onready var speed
+@onready var health: int
+@onready var speed: int
 
 
 func _physics_process(delta):

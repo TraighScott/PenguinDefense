@@ -2,17 +2,17 @@ extends CharacterBody2D
 
 
 @export var speed := 600
-var direction := Vector2(0,1)
+var _direction := Vector2(0,1)
 
 
 func _ready() -> void:
-	direction = get_launch_direction()
+	_direction = get_launch_direction()
 	await get_tree().create_timer(3).timeout
 	queue_free()
 
 
 func _physics_process(delta: float) -> void:
-	move_and_collide(direction * delta * speed)
+	move_and_collide(_direction * delta * speed)
 
 
 func get_launch_direction():
