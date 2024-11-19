@@ -28,3 +28,7 @@ Protect the fortress from oncoming enemies
 - Game features appropriate media, sounds, and graphics.
 - Game runs with no errors or warnings.
 - Code and structure comply with the style guide.
+
+## Self Assessment
+
+We believe we deserve an A grade considering the things we managed to accomplish for this iteration. Next iteration will focus on juice and whatnot.
