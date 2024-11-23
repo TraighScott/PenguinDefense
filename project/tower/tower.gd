@@ -63,8 +63,9 @@ func _on_area_2d_body_entered(body):
 		_curr = cur_target
 
 
-func _on_area_2d_body_exited(_body):
-	_cur_targets = $Area2D.get_overlapping_bodies()
+func _on_area_2d_body_exited(body):
+	_cur_targets.erase(body)
+	#_cur_targets = $Area2D.get_overlapping_bodies()
 
 
 func _on_shoot_timer_timeout() -> void:

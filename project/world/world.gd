@@ -21,6 +21,7 @@ func _physics_process(_delta: float) -> void:
 func _on_fish_timer_timeout():
 	var enemy = path.instantiate()
 	add_child(enemy)
+	enemy.add_to_group("enemy")
 	enemy_spawned.emit(enemy.enemy)
 
 

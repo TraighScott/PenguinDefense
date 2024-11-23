@@ -95,13 +95,11 @@ autowrap_mode = 2
 
 [node name="Controls" type="Label" parent="ControlsBorder/ControlsBackground"]
 layout_mode = 0
-offset_left = 137.0
-offset_top = 195.0
-offset_right = 670.0
-offset_bottom = 229.0
-text = "To select a new tower: Left click on desired tower
-To place a tower: Left click on desired location
-"
+offset_left = 139.0
+offset_top = 161.0
+offset_right = 672.0
+offset_bottom = 195.0
+text = "To place a tower: Left click on desired location"
 label_settings = SubResource("LabelSettings_wu3we")
 
 [node name="CloseButton" type="Button" parent="ControlsBorder/ControlsBackground"]

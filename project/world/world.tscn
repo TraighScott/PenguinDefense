@@ -72,7 +72,6 @@ mouse_filter = 2
 position = Vector2(1087, 200)
 
 [node name="FishTimer" type="Timer" parent="."]
-wait_time = 0.9
 autostart = true
 
 [node name="GameEndTimer" type="Timer" parent="."]
@@ -90,18 +89,18 @@ position = Vector2(576, 323)
 position = Vector2(2, 601)
 
 [node name="FortressHealth" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 525.0
-offset_right = 235.0
-offset_bottom = 559.0
+offset_left = 291.0
+offset_top = 591.0
+offset_right = 518.0
+offset_bottom = 625.0
 text = "Fortress Health 3/3"
 label_settings = SubResource("LabelSettings_jv7dl")
 
 [node name="RemainingTime" type="Label" parent="."]
-offset_left = 261.0
-offset_top = 525.0
-offset_right = 488.0
-offset_bottom = 559.0
+offset_left = 544.0
+offset_top = 591.0
+offset_right = 641.0
+offset_bottom = 625.0
 text = "Remaining Time: 30"
 label_settings = SubResource("LabelSettings_vqd1q")
 

@@ -7,7 +7,7 @@ var _direction := Vector2(0,1)
 
 func _ready() -> void:
 	_direction = get_launch_direction()
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1).timeout
 	queue_free()
 
 

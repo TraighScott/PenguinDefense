@@ -1,27 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgyqj86t0f3hy"]
+[gd_scene load_steps=6 format=3 uid="uid://bgyqj86t0f3hy"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_ggy8h"]
-[ext_resource type="Script" path="res://enemy/enemy_type.gd" id="2_icyul"]
 [ext_resource type="Texture2D" uid="uid://chm1khjakxggl" path="res://enemy/fish.png" id="2_npaq2"]
-
-[sub_resource type="Resource" id="Resource_lysw5"]
-resource_local_to_scene = true
-script = ExtResource("2_icyul")
-name = "Fish"
-health = 1
-speed = 220
+[ext_resource type="Resource" uid="uid://c5bla5usc3j7t" path="res://enemy/fish.tres" id="2_rurkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk8ma"]
-size = Vector2(210, 108)
+size = Vector2(214, 128)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gc5np"]
-radius = 34.0
-height = 137.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_850li"]
+size = Vector2(111, 68)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 2
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_ggy8h")
-enemy_type = SubResource("Resource_lysw5")
+enemy_type = ExtResource("2_rurkx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -37,15 +30,17 @@ shape = SubResource("RectangleShape2D_dk8ma")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_gc5np")
+shape = SubResource("RectangleShape2D_850li")
 
 [node name="EnemyHealth" type="Label" parent="."]
-offset_right = 40.0
+offset_left = -19.0
+offset_right = 21.0
 offset_bottom = 23.0
+horizontal_alignment = 1
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D2" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
