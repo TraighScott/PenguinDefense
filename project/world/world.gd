@@ -54,3 +54,7 @@ func _on_no_tower_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("tower"):
 		body.can_place = true
 		print("Can place")
+
+
+func _on_fortress_fortress_hit() -> void:
+	$ScreenShake.play("screen_shake")

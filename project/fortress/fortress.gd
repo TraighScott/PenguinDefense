@@ -1,6 +1,8 @@
 extends Node2D
 
 
+signal fortress_hit
+
 @export var health := 3
 
 
@@ -8,5 +10,6 @@ func _on_world_enemy_spawned(enemy: Enemy) -> void:
 	enemy.damaged_fort.connect(func():
 		SoundController.tower_damaged_sound()
 		health -= 1
-		print("OW" + str(health))
+		fortress_hit.emit()
 		)
+	

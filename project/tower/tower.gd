@@ -18,7 +18,7 @@ var _id := 0
 func _ready() -> void:
 	var roll = randi_range(1,10)
 	
-	if roll <= 7:
+	if roll <= 8:
 		_id = 1
 	else: 
 		_id = 2
@@ -65,7 +65,6 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_exited(body):
 	_cur_targets.erase(body)
-	#_cur_targets = $Area2D.get_overlapping_bodies()
 
 
 func _on_shoot_timer_timeout() -> void:

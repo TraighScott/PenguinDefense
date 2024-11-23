@@ -14,7 +14,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_collide(_direction * delta * speed)
 
-
+# Projectile will randomly start rotating and curveballing
 func get_launch_direction():
 	var tower = get_parent()
 	if tower == null:
