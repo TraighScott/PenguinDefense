@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=2 format=3 uid="uid://d4dkarmlmtar3"]
+
+[ext_resource type="Script" path="res://enemy/enemy_type.gd" id="1_pvtin"]
+
+[resource]
+script = ExtResource("1_pvtin")
+name = "Boss"
+health = 15
+speed = 190
