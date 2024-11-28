@@ -70,12 +70,10 @@ func _on_area_2d_body_exited(body):
 func _on_shoot_timer_timeout() -> void:
 	if is_instance_valid(_curr) and !_dragging:
 		if _id == 1:
-			print("blam1")
 			var projectile: CharacterBody2D = preload("res://tower/projectile.tscn").instantiate()
 			add_child(projectile)
 			projectile.global_position = global_position
 		elif _id == 2:
-			print("blam2")
 			var aoe: StaticBody2D = preload("res://tower/aoe_projectile.tscn").instantiate()
 			add_child(aoe)
 			aoe.global_position = global_position
@@ -96,5 +94,4 @@ func _on_drag_button_button_up():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if not _dragging:
-		print("Back to the water")
 		queue_free()

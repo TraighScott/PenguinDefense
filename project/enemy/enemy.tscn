@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_ggy8h"]
 [ext_resource type="Texture2D" uid="uid://chm1khjakxggl" path="res://enemy/fish.png" id="2_npaq2"]
-[ext_resource type="Resource" uid="uid://c5bla5usc3j7t" path="res://enemy/fish.tres" id="2_rurkx"]
+[ext_resource type="Resource" uid="uid://c5bla5usc3j7t" path="res://enemy/enemy_resources/fish.tres" id="2_rurkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk8ma"]
 size = Vector2(214, 128)

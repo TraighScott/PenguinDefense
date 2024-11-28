@@ -25,7 +25,6 @@ func load_enemy_type(new_enemy : EnemyType):
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("bleh")
 	damaged_fort.emit()
 	get_parent().get_parent().queue_free()
 

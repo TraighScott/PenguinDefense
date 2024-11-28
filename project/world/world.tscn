@@ -4,6 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://b37xy3evdqbra" path="res://fortress/fortress.tscn" id="2_k5qnd"]
 [ext_resource type="PackedScene" uid="uid://ddkqofqsgw66t" path="res://tower/tower_class.tscn" id="3_xeitl"]
 
+[sub_resource type="Animation" id="Animation_sxrjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_42qe4"]
 resource_name = "screen_shake"
 length = 0.4
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(5, 0), Vector2(10, -5), Vector2(5, -10), Vector2(0, -5), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_sxrjb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_de2pb"]
@@ -121,6 +121,9 @@ autostart = true
 [node name="TowerTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="BossTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 323)
 
@@ -171,5 +174,6 @@ shape = SubResource("RectangleShape2D_g3xdb")
 [connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
 [connection signal="timeout" from="GameEndTimer" to="." method="_on_game_end_timer_timeout"]
 [connection signal="timeout" from="TowerTimer" to="." method="_on_tower_timer_timeout"]
+[connection signal="timeout" from="BossTimer" to="." method="_on_boss_timer_timeout"]
 [connection signal="body_entered" from="NoTowerArea" to="." method="_on_no_tower_area_body_entered"]
 [connection signal="body_exited" from="NoTowerArea" to="." method="_on_no_tower_area_body_exited"]

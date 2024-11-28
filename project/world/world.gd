@@ -26,7 +26,8 @@ func _on_fish_timer_timeout():
 
 
 func _on_game_end_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://menus/win_menu.tscn")
+	#get_tree().change_scene_to_file("res://menus/win_menu.tscn")
+	$BossTimer.start()
 
 
 #This is a problem to be remedied
@@ -47,14 +48,21 @@ func _on_tower_timer_timeout():
 func _on_no_tower_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("tower"):
 		body.can_place = false
-		print("Can't place")
 
 
 func _on_no_tower_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("tower"):
 		body.can_place = true
-		print("Can place")
 
 
 func _on_fortress_fortress_hit() -> void:
 	$ScreenShake.play("screen_shake")
+
+
+#Stop fish and Spawn boss, then when boss is killed it needs to end game
+func _on_boss_timer_timeout():
+	$FishTimer.stop()
+	var boss = path.instantiate()
+	add_child(boss)
+	boss.add_to_group("enemy")
+	enemy_spawned.emit(boss.enemy)
