@@ -4,7 +4,7 @@ signal enemy_spawned
 
 @export var can_place := true
 
-var wave := 2
+var wave := 0
 
 @onready var path = preload("res://enemy/path1.tscn")
 @onready var tower_scene = preload("res://tower/tower.tscn")
