@@ -4,10 +4,14 @@ signal enemy_spawned
 
 @export var can_place := true
 
+var wave := 2
+
 @onready var path = preload("res://enemy/path1.tscn")
 @onready var tower_scene = preload("res://tower/tower.tscn")
 @onready var fortress: Node2D = $Fortress
 @onready var _time_left_in_game = $GameEndTimer.wait_time
+@onready var _game_timer: Timer = $GameEndTimer
+@onready var _enemy_timer: Timer = $FishTimer
 
 
 func _physics_process(_delta: float) -> void:
@@ -23,11 +27,24 @@ func _on_fish_timer_timeout():
 	add_child(enemy)
 	enemy.add_to_group("enemy")
 	enemy_spawned.emit(enemy.enemy)
-
-
+	
+	
 func _on_game_end_timer_timeout() -> void:
-	#get_tree().change_scene_to_file("res://menus/win_menu.tscn")
-	$BossTimer.start()
+	wave += 1
+	_enemy_timer.paused = true
+	
+	_time_left_in_game = 30
+	if wave != 3:
+		await get_tree().create_timer(10).timeout
+	_enemy_timer.paused = false
+	_game_timer.start()
+	
+	if wave == 1:
+		_enemy_timer.wait_time = 0.5
+	elif wave == 2:
+		_enemy_timer.wait_time = .25
+	elif wave == 3:
+		get_tree().change_scene_to_file("res://menus/win_menu.tscn")
 
 
 #This is a problem to be remedied
