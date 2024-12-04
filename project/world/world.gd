@@ -1,17 +1,20 @@
 extends Node2D
 
 signal enemy_spawned
+signal boss_spawned
 
 @export var can_place := true
 
 var wave := 0
 
 @onready var path = preload("res://enemy/path1.tscn")
+@onready var boss_path = preload("res://boss/boss_path.tscn")
 @onready var tower_scene = preload("res://tower/tower.tscn")
 @onready var fortress: Node2D = $Fortress
 @onready var _time_left_in_game = $GameEndTimer.wait_time
 @onready var _game_timer: Timer = $GameEndTimer
 @onready var _enemy_timer: Timer = $FishTimer
+@onready var _wave_countdown_timer: Timer = $WaveCountdownTimer
 
 
 func _physics_process(_delta: float) -> void:
@@ -20,6 +23,8 @@ func _physics_process(_delta: float) -> void:
 	
 	$FortressHealth.text = "Fortress Health %d/3" % fortress.health
 	$RemainingTime.text = "Remaining Time: %d" % $GameEndTimer.time_left
+	$Wave.text = "Wave: %d" % (wave+1)
+	$WaveCountdown.text  = "%d" % _wave_countdown_timer.time_left
 
 
 func _on_fish_timer_timeout():
@@ -35,7 +40,11 @@ func _on_game_end_timer_timeout() -> void:
 	
 	_time_left_in_game = 30
 	if wave != 3:
-		await get_tree().create_timer(10).timeout
+		$WaveCountdown.show()
+		_wave_countdown_timer.wait_time = 10
+		_wave_countdown_timer.start()
+		await _wave_countdown_timer.timeout
+		$WaveCountdown.hide()
 	_enemy_timer.paused = false
 	_game_timer.start()
 	
@@ -44,14 +53,15 @@ func _on_game_end_timer_timeout() -> void:
 	elif wave == 2:
 		_enemy_timer.wait_time = .25
 	elif wave == 3:
+		$Wave.hide()
+		$BossWave.show()
+		_enemy_timer.paused = true
+		var boss = boss_path.instantiate()
+		add_child(boss)
+		boss.add_to_group("enemy")
+		boss_spawned.emit(boss.boss)
+	elif wave == 4:
 		get_tree().change_scene_to_file("res://menus/win_menu.tscn")
-
-
-#This is a problem to be remedied
-func wave_management():
-	if $GameEndTimer.time_left < (_time_left_in_game/1.25):
-		$EnemySpawnTimer.wait_time -= .1
-		_time_left_in_game = $GameEndTimer.wait_time
 
 
 func _on_tower_timer_timeout():
@@ -74,12 +84,3 @@ func _on_no_tower_area_body_exited(body: Node2D) -> void:
 
 func _on_fortress_fortress_hit() -> void:
 	$ScreenShake.play("screen_shake")
-
-
-#Stop fish and Spawn boss, then when boss is killed it needs to end game
-func _on_boss_timer_timeout():
-	$FishTimer.stop()
-	var boss = path.instantiate()
-	add_child(boss)
-	boss.add_to_group("enemy")
-	enemy_spawned.emit(boss.enemy)

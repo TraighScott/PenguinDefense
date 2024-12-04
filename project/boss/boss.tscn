@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbahcc3f7wy0r"]
+
+[ext_resource type="Texture2D" uid="uid://bovt0m40xigua" path="res://icon.svg" id="1_aqlde"]
+[ext_resource type="Script" path="res://boss/boss.gd" id="1_pejr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxcv"]
+size = Vector2(128, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03pxx"]
+size = Vector2(128, 126)
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_pejr0")
+health = 100
+speed = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+shape = SubResource("RectangleShape2D_ytxcv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aqlde")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_03pxx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="BossHealth" type="Label" parent="."]
+offset_left = -20.0
+offset_top = 30.0
+offset_right = 20.0
+offset_bottom = 53.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	SoundController.lose_sound()
+	SoundController.win_sound()
 
 
 func _on_button_pressed() -> void:

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmaumvfttjjl6"]
+[gd_scene load_steps=7 format=3 uid="uid://dmaumvfttjjl6"]
 
 [ext_resource type="Script" path="res://sounds/sound_controller.gd" id="1_jqwyu"]
 [ext_resource type="AudioStream" uid="uid://cxn5jotuo0oeh" path="res://sounds/music.ogg" id="2_u1cbe"]
 [ext_resource type="AudioStream" uid="uid://dj0u7kw0o10s0" path="res://sounds/pop_sound.wav" id="3_3t6wk"]
 [ext_resource type="AudioStream" uid="uid://c73sd38fqcabj" path="res://sounds/tower_damage_sound.wav" id="4_q5rvk"]
+[ext_resource type="AudioStream" uid="uid://3e6vmhu1v7xc" path="res://sounds/the_loser_song.wav" id="5_xvwo2"]
+[ext_resource type="AudioStream" uid="uid://2ns4kjm6m3tq" path="res://sounds/winner_tune.wav" id="6_pc4hu"]
 
 [node name="SoundController" type="Node2D"]
 script = ExtResource("1_jqwyu")
@@ -17,3 +19,10 @@ stream = ExtResource("3_3t6wk")
 
 [node name="TowerHitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_q5rvk")
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xvwo2")
+volume_db = 10.0
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pc4hu")

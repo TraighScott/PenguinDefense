@@ -13,3 +13,11 @@ func _on_world_enemy_spawned(enemy: Enemy) -> void:
 		fortress_hit.emit()
 		)
 	
+
+
+func _on_world_boss_spawned(boss: Boss) -> void:
+	boss.damaged_fort.connect(func():
+		SoundController.tower_damaged_sound()
+		health = 0
+		fortress_hit.emit()
+		)

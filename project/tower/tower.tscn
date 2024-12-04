@@ -22,7 +22,7 @@ radius = 118.609
 size = Vector2(58, 91)
 
 [node name="Tower" type="CharacterBody2D" groups=["tower"]]
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("1_bf3bc")
 
 [node name="DragButton" type="Button" parent="."]
@@ -51,13 +51,6 @@ shape = SubResource("CircleShape2D_o3vdq")
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_r2sd1")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(148, 0)
-
-[node name="AimButton" type="Button" parent="Marker2D"]
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
 
@@ -70,7 +63,5 @@ target_position = Vector2(149, 0)
 [connection signal="button_up" from="DragButton" to="." method="_on_drag_button_button_up"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="button_down" from="Marker2D/AimButton" to="." method="_on_aim_button_button_down"]
-[connection signal="button_up" from="Marker2D/AimButton" to="." method="_on_aim_button_button_up"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -49,7 +49,7 @@ func _on_area_2d_body_entered(body):
 		_cur_targets = $Area2D.get_overlapping_bodies()
 		
 		for i in _cur_targets:
-			if "Enemy" in i.name:
+			if "Enemy" in i.name or "Boss" in i.name:
 				temp_array.append(i)
 		var cur_target: Node2D = null
 		
@@ -90,6 +90,7 @@ func _on_drag_button_button_up():
 	if can_place == true:
 		_dragging = false
 		_placed = true
+	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
