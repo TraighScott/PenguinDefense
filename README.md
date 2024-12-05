@@ -31,4 +31,4 @@ Protect the fortress from oncoming enemies
 
 ## Self Assessment
 
-We believe we deserve an A grade considering the things we managed to accomplish for this iteration. Next iteration will focus on juice and whatnot.
+We believe we deserve an A grade. Though we had to cut some features due to lack of time and overestimating scope, we believe we have a full experience thanks to the addition of waves and a boss.

@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 	if wave != 3:
 		$CanvasLayer/CurrentWave.text = "Wave: %d" % (wave+1)
 	elif wave == 3:
-		$CanvasLayer/CurrentWave.text = "Boss Wave!"
+		$CanvasLayer/CurrentWave.text = "Boss!"
 	$CanvasLayer/WavePause.text  = "Time Until Next Wave: %d" % _wave_countdown_timer.time_left
 
 
