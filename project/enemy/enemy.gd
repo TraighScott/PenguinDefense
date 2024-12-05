@@ -9,6 +9,9 @@ signal damaged_fort
 @onready var health: int
 @onready var speed: int
 
+func _ready() -> void:
+	$AnimationPlayer.play("swim")
+
 
 func _physics_process(delta):
 	if health <= 0:
