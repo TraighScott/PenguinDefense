@@ -8,6 +8,7 @@ signal damaged_fort
 @onready var path: PathFollow2D = get_parent()
 @onready var health: int
 @onready var speed: int
+@onready var color: Color
 
 func _ready() -> void:
 	$AnimationPlayer.play("swim")
@@ -24,6 +25,8 @@ func load_enemy_type(new_enemy : EnemyType):
 	enemy_type = new_enemy
 	health = enemy_type.health
 	speed = enemy_type.speed
+	color = enemy_type.color
+	$Sprite2D.modulate = color
 	enemy_type.duplicate()
 
 

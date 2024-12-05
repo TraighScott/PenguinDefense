@@ -8,3 +8,4 @@ script = ExtResource("1_mb3pr")
 name = "tanky"
 health = 3
 speed = 200
+color = Color(0.854902, 0.537255, 0.92549, 1)

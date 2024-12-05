@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbahcc3f7wy0r"]
+[gd_scene load_steps=8 format=3 uid="uid://cbahcc3f7wy0r"]
 
 [ext_resource type="Script" path="res://boss/boss.gd" id="1_pejr0"]
 [ext_resource type="Texture2D" uid="uid://y6w6nuh03lbd" path="res://boss/seal.png" id="2_q01oy"]
@@ -8,6 +8,44 @@ size = Vector2(161, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03pxx"]
 size = Vector2(161, 114)
+
+[sub_resource type="Animation" id="Animation_2vmde"]
+resource_name = "swim"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2xfui"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dufq0"]
+_data = {
+"RESET": SubResource("Animation_2xfui"),
+"swim": SubResource("Animation_2vmde")
+}
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 8
@@ -39,6 +77,11 @@ offset_left = -20.0
 offset_top = 30.0
 offset_right = 20.0
 offset_bottom = 53.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dufq0")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

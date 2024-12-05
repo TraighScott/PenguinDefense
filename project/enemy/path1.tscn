@@ -16,6 +16,7 @@ script = ExtResource("3_1lxgc")
 name = "Fish"
 health = 1
 speed = 220
+color = Color(0, 0, 0, 1)
 
 [node name="Path1" type="Path2D"]
 texture_filter = 1

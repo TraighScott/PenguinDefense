@@ -8,3 +8,4 @@ script = ExtResource("1_s2pi1")
 name = "Fish"
 health = 1
 speed = 220
+color = Color(1, 1, 1, 1)

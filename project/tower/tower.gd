@@ -24,7 +24,7 @@ func _ready() -> void:
 		_id = 2
 	
 	if _id == 2:
-		sprite.modulate = Color.BLUE
+		sprite.modulate = Color(.5, .5, 1)
 		shoot_timer.wait_time = 2
 
 

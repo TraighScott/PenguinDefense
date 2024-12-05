@@ -8,3 +8,4 @@ script = ExtResource("1_hwss0")
 name = "fast"
 health = 1
 speed = 300
+color = Color(0.90168, 0.554717, 0.272928, 1)

@@ -9,6 +9,10 @@ signal damaged_fort
 @onready var path: PathFollow2D = get_parent()
 
 
+func _ready() -> void:
+	$AnimationPlayer.play("swim")
+
+
 func _physics_process(delta):
 	if health <= 0:
 		get_tree().change_scene_to_file("res://menus/win_menu.tscn")
