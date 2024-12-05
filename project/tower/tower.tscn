@@ -1,19 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctdvmh0mbql81"]
+[gd_scene load_steps=10 format=3 uid="uid://ctdvmh0mbql81"]
 
 [ext_resource type="Script" path="res://tower/tower.gd" id="1_bf3bc"]
 [ext_resource type="Texture2D" uid="uid://cwbthgcyp1up4" path="res://tower/penguin.png" id="2_ygpwx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ondj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amrvf"]
+bg_color = Color(0.6, 0.6, 0.6, 0.686275)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcmij"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qg26"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gynv0"]
 
 [sub_resource type="Theme" id="Theme_u5a1m"]
 Button/styles/focus = SubResource("StyleBoxEmpty_8ondj")
-Button/styles/hover = null
+Button/styles/hover = SubResource("StyleBoxFlat_amrvf")
 Button/styles/normal = SubResource("StyleBoxEmpty_xcmij")
-Button/styles/pressed = SubResource("StyleBoxFlat_1qg26")
+Button/styles/pressed = SubResource("StyleBoxEmpty_gynv0")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3vdq"]
 radius = 118.609

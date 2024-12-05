@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkhjdu2doo870"]
+[gd_scene load_steps=13 format=3 uid="uid://dkhjdu2doo870"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_h8od5"]
 [ext_resource type="PackedScene" uid="uid://b37xy3evdqbra" path="res://fortress/fortress.tscn" id="2_k5qnd"]
@@ -54,12 +54,10 @@ size = Vector2(170, 221)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3xdb"]
 size = Vector2(497, 139)
 
-[sub_resource type="LabelSettings" id="LabelSettings_0x333"]
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_mhcst"]
 font_size = 32
-font_color = Color(0, 0, 0, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 texture_filter = 1
@@ -99,6 +97,13 @@ offset_bottom = 445.0
 scale = Vector2(1.33061, 0.863134)
 mouse_filter = 2
 color = Color(0.679755, 0.911014, 1, 1)
+
+[node name="TowerBorder" type="ColorRect" parent="."]
+offset_left = -93.0
+offset_top = 566.0
+offset_right = 1234.0
+offset_bottom = 636.0
+color = Color(0, 0, 0, 1)
 
 [node name="TowerPathBackground" type="ColorRect" parent="."]
 offset_left = -93.0
@@ -158,37 +163,22 @@ shape = SubResource("RectangleShape2D_g3xdb")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_lsf6l")]
 
-[node name="Wave" type="Label" parent="."]
-offset_left = 150.0
-offset_top = 600.0
-offset_right = 190.0
-offset_bottom = 623.0
-label_settings = SubResource("LabelSettings_0x333")
-
-[node name="BossWave" type="Label" parent="."]
-visible = false
-offset_left = 300.0
-offset_top = 1200.0
-offset_right = 341.0
-offset_bottom = 1223.0
-text = "Boss!"
-label_settings = SubResource("LabelSettings_0x333")
-
 [node name="WaveCountdown" type="Label" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 575.0
-offset_top = 288.0
-offset_right = 576.0
-offset_bottom = 333.0
+offset_left = 827.0
+offset_top = 7.0
+offset_right = 1018.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 label_settings = SubResource("LabelSettings_mhcst")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="boss_spawned" from="." to="Fortress" method="_on_world_boss_spawned"]
 [connection signal="enemy_spawned" from="." to="Fortress" method="_on_world_enemy_spawned"]

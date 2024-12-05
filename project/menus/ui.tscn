@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pkbsg3fvsa16"]
+[gd_scene load_steps=5 format=3 uid="uid://pkbsg3fvsa16"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ll5j8"]
 font_size = 24
@@ -11,6 +11,11 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_y8tlo"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ja2t0"]
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -71,3 +76,11 @@ offset_right = 350.0
 offset_bottom = 524.0
 text = "Wave: 0"
 label_settings = SubResource("LabelSettings_y8tlo")
+
+[node name="WavePause" type="Label" parent="."]
+offset_left = 260.0
+offset_top = 33.0
+offset_right = 1134.0
+offset_bottom = 78.0
+text = "UPPPPPPPPPPPPPDATEE MEEEEEEEEEEE TO BE WORKING"
+label_settings = SubResource("LabelSettings_ja2t0")
