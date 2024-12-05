@@ -138,11 +138,12 @@ autowrap_mode = 2
 
 [node name="Controls" type="Label" parent="ControlsBorder/ControlsBackground"]
 layout_mode = 0
-offset_left = 139.0
-offset_top = 161.0
-offset_right = 672.0
-offset_bottom = 195.0
-text = "To place a tower: Left click on desired location
+offset_left = 55.0
+offset_top = 126.0
+offset_right = 770.0
+offset_bottom = 345.0
+text = "To place a tower: Click a tower from the bottom of the screen.
+Then click on where you want to place the penguin!
 
 White penguins shoot snowballs.
 Blue penguins create a damaging circle 
