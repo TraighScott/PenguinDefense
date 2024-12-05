@@ -30,5 +30,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):
 		SoundController.enemy_defeated_sound()
 		health -= 1
-		print("Hit!")
 		body.queue_free()
