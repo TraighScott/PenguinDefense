@@ -21,9 +21,9 @@ func _physics_process(_delta: float) -> void:
 	if fortress.health == 0:
 		get_tree().change_scene_to_file("res://menus/end_menu.tscn")
 	
-	$FortressHealth.text = "Fortress Health %d/3" % fortress.health
-	$RemainingTime.text = "Remaining Time: %d" % $GameEndTimer.time_left
-	$Wave.text = "Wave: %d" % (wave+1)
+	$CanvasLayer/HealthRemaining.text = "Fortress Health %d/3" % fortress.health
+	$CanvasLayer/RemainingTime.text = "Wave Time Left: %d" % $GameEndTimer.time_left
+	$CanvasLayer/CurrentWave.text = "Wave: %d" % (wave+1)
 	$WaveCountdown.text  = "%d" % _wave_countdown_timer.time_left
 
 
