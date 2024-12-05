@@ -23,7 +23,10 @@ func _physics_process(_delta: float) -> void:
 	
 	$CanvasLayer/HealthRemaining.text = "Fortress Health %d/3" % fortress.health
 	$CanvasLayer/RemainingTime.text = "Wave Time Left: %d" % $GameEndTimer.time_left
-	$CanvasLayer/CurrentWave.text = "Wave: %d" % (wave+1)
+	if wave != 3:
+		$CanvasLayer/CurrentWave.text = "Wave: %d" % (wave+1)
+	elif wave == 3:
+		$CanvasLayer/CurrentWave.text = "Boss Wave!"
 	$CanvasLayer/WavePause.text  = "Time Until Next Wave: %d" % _wave_countdown_timer.time_left
 
 
@@ -31,6 +34,8 @@ func _on_fish_timer_timeout():
 	var enemy = path.instantiate()
 	add_child(enemy)
 	enemy.add_to_group("enemy")
+	if wave == 2:
+		enemy.enemy.speed = enemy.enemy.speed*1.5
 	enemy_spawned.emit(enemy.enemy)
 	
 	
@@ -39,7 +44,7 @@ func _on_game_end_timer_timeout() -> void:
 	_enemy_timer.paused = true
 	
 	_time_left_in_game = 30
-	if wave != 3:
+	if wave != 4:
 		$CanvasLayer/WavePause.show()
 		_wave_countdown_timer.wait_time = 10
 		_wave_countdown_timer.start()
@@ -49,9 +54,9 @@ func _on_game_end_timer_timeout() -> void:
 	_game_timer.start()
 	
 	if wave == 1:
-		_enemy_timer.wait_time = 0.5
+		_enemy_timer.wait_time = 0.1
 	elif wave == 2:
-		_enemy_timer.wait_time = .25
+		_enemy_timer.wait_time = .05
 	elif wave == 3:
 		_enemy_timer.paused = true
 		var boss = boss_path.instantiate()

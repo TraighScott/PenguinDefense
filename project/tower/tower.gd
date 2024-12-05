@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	if _id == 2:
 		sprite.modulate = Color(.5, .5, 1)
-		shoot_timer.wait_time = 2
+		shoot_timer.wait_time = 3
 
 
 func _physics_process(_delta: float) -> void:
@@ -90,7 +90,6 @@ func _on_drag_button_button_up():
 	if can_place == true:
 		_dragging = false
 		_placed = true
-	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
