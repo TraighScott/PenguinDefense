@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dse5rau7ux2sn"]
+[gd_scene load_steps=10 format=3 uid="uid://dse5rau7ux2sn"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_p0bl0"]
 [ext_resource type="Theme" uid="uid://dswano8r6l2mp" path="res://menus/button_theme.tres" id="1_t455a"]
 [ext_resource type="Texture2D" uid="uid://y6w6nuh03lbd" path="res://boss/seal.png" id="2_p27ae"]
 [ext_resource type="Texture2D" uid="uid://cwbthgcyp1up4" path="res://tower/penguin.png" id="3_wfwek"]
 [ext_resource type="Texture2D" uid="uid://chm1khjakxggl" path="res://enemy/fish.png" id="5_0d07p"]
+[ext_resource type="Texture2D" uid="uid://b0jc8bul7jqkw" path="res://tower/snowball.png" id="5_10jva"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wayrf"]
 font_size = 72
@@ -103,6 +104,25 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.318814, 0.452116, 0.999988, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="ControlsBorder/ControlsBackground"]
+modulate = Color(0.0196078, 0.713726, 1, 1)
+position = Vector2(658, 381)
+rotation = 3.14159
+scale = Vector2(0.99, 1.15333)
+texture = ExtResource("5_10jva")
+
+[node name="Penguin2" type="Sprite2D" parent="ControlsBorder/ControlsBackground"]
+modulate = Color(0.192157, 0.196078, 1, 1)
+position = Vector2(658, 387)
+scale = Vector2(-0.15, 0.15)
+texture = ExtResource("3_wfwek")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="ControlsBorder/ControlsBackground"]
+position = Vector2(95, 362)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_10jva")
+
 [node name="Instructions" type="Label" parent="ControlsBorder/ControlsBackground"]
 layout_mode = 0
 offset_left = 63.0
@@ -122,15 +142,19 @@ offset_left = 139.0
 offset_top = 161.0
 offset_right = 672.0
 offset_bottom = 195.0
-text = "To place a tower: Left click on desired location"
+text = "To place a tower: Left click on desired location
+
+White penguins shoot snowballs.
+Blue penguins create a damaging circle 
+around themselves."
 label_settings = SubResource("LabelSettings_wu3we")
 
 [node name="CloseButton" type="Button" parent="ControlsBorder/ControlsBackground"]
 layout_mode = 0
 offset_left = 310.0
-offset_top = 325.0
+offset_top = 366.0
 offset_right = 512.0
-offset_bottom = 390.0
+offset_bottom = 431.0
 theme = ExtResource("1_t455a")
 text = "Close"
 
