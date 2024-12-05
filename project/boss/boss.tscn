@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbahcc3f7wy0r"]
 
-[ext_resource type="Texture2D" uid="uid://bovt0m40xigua" path="res://icon.svg" id="1_aqlde"]
 [ext_resource type="Script" path="res://boss/boss.gd" id="1_pejr0"]
+[ext_resource type="Texture2D" uid="uid://y6w6nuh03lbd" path="res://boss/seal.png" id="2_q01oy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxcv"]
-size = Vector2(128, 126)
+size = Vector2(161, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03pxx"]
-size = Vector2(128, 126)
+size = Vector2(161, 114)
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 8
@@ -17,16 +17,19 @@ health = 100
 speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_ytxcv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_aqlde")
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_q01oy")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_03pxx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

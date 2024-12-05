@@ -27,6 +27,7 @@ offset_bottom = 528.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="BlackBorder2"]
+layout_mode = 0
 offset_left = 78.0
 offset_top = 3.0
 offset_right = 459.0
@@ -48,6 +49,7 @@ offset_bottom = 473.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="BlackBorder"]
+layout_mode = 0
 offset_left = 78.0
 offset_top = 3.0
 offset_right = 326.0
@@ -78,9 +80,12 @@ text = "Wave: 0"
 label_settings = SubResource("LabelSettings_y8tlo")
 
 [node name="WavePause" type="Label" parent="."]
-offset_left = 260.0
-offset_top = 33.0
-offset_right = 1134.0
-offset_bottom = 78.0
-text = "UPPPPPPPPPPPPPDATEE MEEEEEEEEEEE TO BE WORKING"
+visible = false
+offset_left = 728.0
+offset_top = 22.0
+offset_right = 1070.0
+offset_bottom = 67.0
+text = "Time Until Next Wave:"
 label_settings = SubResource("LabelSettings_ja2t0")
+horizontal_alignment = 1
+vertical_alignment = 1
