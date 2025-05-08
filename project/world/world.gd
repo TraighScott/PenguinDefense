@@ -16,7 +16,6 @@ var wave := 0
 @onready var _enemy_timer: Timer = $FishTimer
 @onready var _wave_countdown_timer: Timer = $WaveCountdownTimer
 
-
 func _physics_process(_delta: float) -> void:
 	if fortress.health == 0:
 		get_tree().change_scene_to_file("res://menus/end_menu.tscn")

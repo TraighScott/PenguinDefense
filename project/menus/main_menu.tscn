@@ -83,8 +83,9 @@ offset_left = 205.0
 offset_top = 81.0
 offset_right = 947.0
 offset_bottom = 180.0
-text = "Tower Defense Game"
+text = "Penguin Defense "
 label_settings = SubResource("LabelSettings_wayrf")
+horizontal_alignment = 1
 
 [node name="ControlsBorder" type="ColorRect" parent="."]
 visible = false
