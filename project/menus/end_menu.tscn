@@ -21,7 +21,7 @@ offset_left = 167.0
 offset_top = 108.0
 offset_right = 973.0
 offset_bottom = 180.0
-text = "Your Tower Has been Destroyed"
+text = "Your Fortress Has been Destroyed"
 label_settings = SubResource("LabelSettings_abr38")
 
 [node name="Button" type="Button" parent="."]

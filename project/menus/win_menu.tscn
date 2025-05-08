@@ -21,7 +21,7 @@ offset_left = 167.0
 offset_top = 108.0
 offset_right = 973.0
 offset_bottom = 180.0
-text = "Your Tower Survived!"
+text = "Your Fortress Survived!"
 label_settings = SubResource("LabelSettings_e248k")
 horizontal_alignment = 1
 
